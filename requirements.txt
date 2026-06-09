@@ -1,9 +1,0 @@
-# Install a CUDA-enabled torch/torchvision build matching your CUDA version.
-torch
-torchvision
-transformers
-pandas
-Pillow
-matplotlib
-scikit-learn
-umap-learn

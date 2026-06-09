@@ -5,8 +5,6 @@ Frozen-feature linear/MLP probes and last-block fine-tuning for the CheXpert
 Pleural Effusion), comparing an ImageNet-pretrained **DenseNet121** against a
 self-supervised **DINOv3 ViT-B/16** backbone.
 
-**The repository includes the implementation, preprocessing scripts, and
-instructions required to reproduce the main results.**
 
 ## Repository structure
 

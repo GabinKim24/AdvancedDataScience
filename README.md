@@ -167,7 +167,7 @@ python plot_feature_umap.py \
     features/train_internal_uzeros_densenet121_features.pt \
     features/train_internal_uzeros_facebook_dinov3_vitb16_pretrain_lvd1689m_mean_patch_features.pt \
   --output-dir umap_outputs/train_mean_patch_primary \
-  --color-by primary --max-samples 5000
+  --color-by primary --max-samples 10000
 ```
 
 ## Main results (validation set)

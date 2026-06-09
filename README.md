@@ -22,7 +22,6 @@ plot_feature_umap.py              # UMAP figures from feature files
 finetune_dinov3_last_block.py     # DINOv3 last-block fine-tune
 finetune_densenet121_last_block.py# DenseNet121 denseblock4 fine-tune
 evaluate_finetuned_models.py      # Evaluate fine-tuned image checkpoints
-requirements.txt
 ```
 
 ## Data layout

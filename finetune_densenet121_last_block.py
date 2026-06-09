@@ -1,17 +1,3 @@
-"""Fine-tune the last dense block of DenseNet121 (denseblock4 + norm5) for CheXpert.
-
-Provenance (see PROVENANCE.md): applies the DINOv2ForRadiology last-block
-fine-tuning recipe (DINORAD, CC BY-NC 4.0 — freeze backbone, unfreeze only the
-last block, joint train with low backbone-lr / higher head-lr) to a torchvision
-DenseNet121 (LIB) instead of a ViT. Shares the training/metrics engine with
-`finetune_dinov3_last_block.py`. DenseNet121 + ImageNet weights from torchvision;
-the denseblock4/norm5 unfreezing and forward pooling are the author's own
-(USED-OWN).
-
-Defaults match the project's final DenseNet fine-tune run
-(`densenet121_denseblock4_mlp_30ep_bs16_w4_h512_drop01`).
-"""
-
 import argparse
 from pathlib import Path
 

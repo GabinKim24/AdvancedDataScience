@@ -1,14 +1,3 @@
-"""Train a linear multi-label probe on saved CheXpert features (frozen backbone).
-
-Provenance (see PROVENANCE.md): this is the frozen-feature linear-probe of
-MohammedSB/DINOv2ForRadiology `dinov2/run/eval/linear.py` (DINORAD, CC BY-NC
-4.0): a linear classifier trained on frozen backbone features and selected on
-validation AUROC. Reimplemented here as a standalone trainer over cached `.pt`
-feature files (works for both DenseNet121 and DINOv3 features). The BCE
-pos_weight / focal-loss handling, feature standardization, and checkpoint schema
-are the author's own (USED-OWN). AUROC via scikit-learn (LIB).
-"""
-
 import argparse
 import random
 from pathlib import Path

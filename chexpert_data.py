@@ -1,18 +1,3 @@
-"""CheXpert 5-label dataset, transforms, and U-Zeros relabeling.
-
-Provenance (see PROVENANCE.md):
-  * Dataset/transform/path-resolution logic is the author's own original code
-    (USED-OWN), reused so outputs stay identical.
-  * The U-Zeros multi-label policy (fill blanks with 0, map uncertain -1 -> 0
-    for the 5 competition labels) is adapted from MohammedSB/DINOv2ForRadiology
-    `dinov2/data/datasets/chexpert.py` (CC BY-NC 4.0) and follows the same
-    uncertainty policy used by Stomper10/CheXpert (approach informed by; no code
-    copied).
-  * Image loading + ImageNet normalization use torchvision + PIL directly (LIB).
-
-Standalone reimplementation — not a verbatim copy of any third-party file.
-"""
-
 import argparse
 from pathlib import Path
 

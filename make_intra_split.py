@@ -1,12 +1,3 @@
-"""Patient-wise split of CheXpert train.csv into intra-train / intra-val CSVs.
-
-Provenance (see PROVENANCE.md): author's own original code (USED-OWN). The
-patient-wise (group-by-patient) split avoids study/patient leakage between the
-internal train and validation folds; this is the project's own design and is
-NOT taken from Stomper10 (which splits by frontal/lateral and uses the official
-valid set as test) nor from DINOv2ForRadiology.
-"""
-
 import argparse
 import re
 from pathlib import Path

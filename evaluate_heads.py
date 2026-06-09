@@ -1,13 +1,3 @@
-"""Evaluate trained frozen-feature Linear/MLP heads; save metrics and plots.
-
-Provenance (see PROVENANCE.md): author's own original evaluation code
-(USED-OWN). Reconstructs the head from a checkpoint, runs inference over a
-feature `.pt` file, and writes per-class + macro AUROC/F1/precision/recall,
-ROC curves, confusion matrices, and (optionally) t-SNE/UMAP embeddings.
-Metrics/plots use scikit-learn + matplotlib (LIB). Compatible with checkpoints
-produced by `train_linear_head.py` / `train_mlp_head.py` in this folder.
-"""
-
 import argparse
 import json
 from pathlib import Path

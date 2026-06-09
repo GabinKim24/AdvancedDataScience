@@ -1,10 +1,3 @@
-"""Count CheXpert 5-label value distribution (positive/negative/uncertain/blank).
-
-Provenance (see PROVENANCE.md): author's own original code (USED-OWN). Hardcoded
-absolute paths from the original were replaced with argparse options; the
-counting logic and combined-distribution CSV output are unchanged.
-"""
-
 import argparse
 from pathlib import Path
 

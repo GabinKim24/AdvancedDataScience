@@ -1,12 +1,3 @@
-"""Apply the U-Zeros label policy to CheXpert split CSVs.
-
-Provenance (see PROVENANCE.md): the U-Zeros policy (blanks -> 0, uncertain -1
--> 0 for the 5 competition labels) is adapted from
-MohammedSB/DINOv2ForRadiology `dinov2/data/datasets/chexpert.py` (CC BY-NC 4.0)
-and matches Stomper10/CheXpert's "zeroes" uncertainty option (approach informed
-by; no code copied). The CSV I/O wrapper is the author's own (USED-OWN).
-"""
-
 import argparse
 from pathlib import Path
 

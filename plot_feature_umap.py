@@ -1,13 +1,3 @@
-"""Plot UMAP embeddings from saved DenseNet/DINO feature `.pt` files.
-
-Provenance (see PROVENANCE.md): author's own original visualization code
-(USED-OWN). Loads one or more feature files, optionally standardizes and
-metadata-filters them, fits UMAP (umap-learn, LIB), and writes per-file and
-side-by-side comparison figures plus coordinate CSVs. Compatible with the
-feature files produced by `extract_densenet121_features.py` /
-`extract_dinov3_features.py` in this folder.
-"""
-
 import argparse
 import csv
 from pathlib import Path

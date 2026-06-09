@@ -1,18 +1,3 @@
-"""Fine-tune the last transformer block(s) of DINOv3 for CheXpert.
-
-Provenance (see PROVENANCE.md): this is the end-to-end fine-tuning path of
-MohammedSB/DINOv2ForRadiology (DINORAD, CC BY-NC 4.0) — freeze the backbone,
-unfreeze the last block(s), and train the backbone + head together with a low
-backbone learning rate and a higher head learning rate (cf. their `--fine-tune`
-/ `--backbone-learning-rate` linear-probe path). Reimplemented for a standalone
-HF Transformers pipeline; the DINOv3 backbone is loaded via `AutoModel` (LIB).
-The token pooling, AMP loop, pos_weight BCE, and checkpoint schema are the
-author's own (USED-OWN).
-
-Defaults match the project's final DINOv3 fine-tune run
-(`dinov3_last_block_mean_patch_mlp_30ep_bs16_w4_h512_drop01`).
-"""
-
 import argparse
 import csv
 import json

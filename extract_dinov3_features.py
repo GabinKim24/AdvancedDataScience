@@ -1,20 +1,3 @@
-"""Extract frozen DINOv3 features for CheXpert CSV splits (cls / mean / max / mean_max).
-
-Provenance (see PROVENANCE.md):
-  * Frozen-backbone -> cached-feature extraction follows the
-    DINOv2ForRadiology linear-probe methodology (DINORAD, CC BY-NC 4.0,
-    reimplemented; not a verbatim copy).
-  * The DINOv3 backbone is loaded and run via Hugging Face `transformers`
-    `AutoModel.from_pretrained(...)` directly (LIB).
-  * Token pooling variants (cls / mean_patch / max_patch / mean_max_patch,
-    incl. register-token offset) and the feature-file schema are the author's
-    own (USED-OWN).
-
-Final experiments used `--model-name facebook/dinov3-vitb16-pretrain-lvd1689m
---feature-type mean_patch`; `cls` and `mean_max_patch` were additional
-ablations.
-"""
-
 import argparse
 import os
 from pathlib import Path

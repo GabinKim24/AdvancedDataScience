@@ -8,27 +8,14 @@ self-supervised **DINOv3 ViT-B/16** backbone.
 **The repository includes the implementation, preprocessing scripts, and
 instructions required to reproduce the main results.**
 
-> **License / use:** the probe + fine-tuning *method* is adapted from
-> [DINOv2ForRadiology](https://github.com/MohammedSB/DINOv2ForRadiology)
-> (CC BY-NC 4.0) → this repository is for **non-commercial / academic use only**.
-> See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
-
 ## Attribution
 
-This code is organized so every file's origin is explicit (full per-file map in
-[`PROVENANCE.md`](PROVENANCE.md)):
-
-- **Adapted from** [MohammedSB/DINOv2ForRadiology](https://github.com/MohammedSB/DINOv2ForRadiology)
-  (Baharoon et al., *An Experimental Study of DINOv2 on Radiology Benchmarks*,
-  arXiv:2312.02366; CC BY-NC 4.0): the frozen-backbone → linear/MLP probe, the
-  last-block fine-tuning path, and the U-Zeros multi-label CheXpert handling.
-  Reimplemented for a standalone Hugging Face + torchvision pipeline (no
-  framework code copied verbatim).
-- **Approach informed by** [Stomper10/CheXpert](https://github.com/Stomper10/CheXpert):
-  the CheXpert U-Zeros uncertainty policy, DenseNet121 backbone, and per-class
-  AUROC reporting. No code copied (the repository ships no license).
-- **Used directly** as libraries: Hugging Face `transformers` (DINOv3 backbone),
-  `torchvision` (DenseNet121 + ImageNet weights), PyTorch, scikit-learn, umap-learn.
+- Probe / last-block fine-tuning method **adapted from**
+  [DINOv2ForRadiology](https://github.com/MohammedSB/DINOv2ForRadiology)
+  (arXiv:2312.02366, CC BY-NC 4.0) → **non-commercial / academic use only**.
+- CheXpert U-Zeros policy / DenseNet121 baseline **informed by**
+  [Stomper10/CheXpert](https://github.com/Stomper10/CheXpert).
+- DINOv3 via Hugging Face `transformers`; DenseNet121 via `torchvision`.
 
 ## Repository structure
 
@@ -47,10 +34,7 @@ repro_public/
 ├── finetune_dinov3_last_block.py     # DINOv3 last-block fine-tune
 ├── finetune_densenet121_last_block.py# DenseNet121 denseblock4 fine-tune
 ├── evaluate_finetuned_models.py      # Evaluate fine-tuned image checkpoints
-├── run_verification.sh               # One-command check of frozen-head metrics
-├── run_verification_finetuned.sh     # One-command check of fine-tuned metrics
-├── requirements.txt
-├── PROVENANCE.md  THIRD_PARTY_NOTICES.md  VERIFICATION.md
+└── requirements.txt
 ```
 
 ## Setup
@@ -230,31 +214,6 @@ python plot_feature_umap.py \
 | DINOv3 ViT-B mean-patch (frozen) | MLP | 0.8155 | 0.5727 |
 | DenseNet121 (fine-tuned, denseblock4) | MLP | 0.8286 | 0.6085 |
 | DINOv3 ViT-B mean-patch (fine-tuned, last block) | MLP | 0.8488 | 0.6096 |
-
-## Verification
-
-Two one-command scripts re-run the evaluations on the trained checkpoints and
-compare `macro_auroc` against the expected values above:
-
-```bash
-bash run_verification.sh             # frozen-head probes (deterministic; matches exactly)
-bash run_verification_finetuned.sh   # fine-tuned models (deterministic forward pass)
-```
-
-Both report `EXACT` / `OK` per run and a final `ALL MATCH ✅`. See
-[`VERIFICATION.md`](VERIFICATION.md) for details, paths, and CPU fallback.
-
-### What is and isn't bit-reproducible
-
-- **Reproducible exactly** (deterministic forward pass): frozen-head evaluation
-  metrics, fine-tuned-checkpoint evaluation metrics, and therefore every metric
-  function (AUROC / F1 / precision / recall / BCE / confusion).
-- **Reproducible up to tiny tolerance**: fine-tuned evaluation uses AMP
-  autocast, so the last decimal may differ.
-- **Not bit-reproducible by design** (stochastic training / GPU nondeterminism /
-  library-version differences): re-extracting features, re-training the probe
-  heads, and re-running fine-tuning. These reproduce the reported numbers within
-  normal run-to-run variation, not bit-for-bit — true of the original code too.
 
 ## References
 

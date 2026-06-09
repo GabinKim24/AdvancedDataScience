@@ -1,12 +1,3 @@
-"""Evaluate fine-tuned DINOv3 / DenseNet121 image checkpoints on CheXpert.
-
-Provenance (see PROVENANCE.md): author's own original evaluation code
-(USED-OWN). Rebuilds the fine-tuned model from its checkpoint, runs image-level
-inference, and writes the same metric/plot bundle as `evaluate_heads.py` (which
-it reuses). Works with checkpoints from `finetune_dinov3_last_block.py` /
-`finetune_densenet121_last_block.py`.
-"""
-
 import argparse
 import json
 from pathlib import Path

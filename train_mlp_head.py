@@ -1,13 +1,3 @@
-"""Train an MLP multi-label probe on saved CheXpert features (frozen backbone).
-
-Provenance (see PROVENANCE.md): same frozen-feature probe protocol as
-`train_linear_head.py` (adapted from DINOv2ForRadiology's
-`dinov2/run/eval/linear.py`, DINORAD, CC BY-NC 4.0). The two-layer MLP head
-(Linear-ReLU-Dropout-Linear) is the author's own extension of the linear probe
-(USED-OWN); the rest (pos_weight/focal loss, standardization, checkpoint schema,
-scikit-learn AUROC) matches the linear trainer.
-"""
-
 import argparse
 import random
 from pathlib import Path

@@ -1,14 +1,3 @@
-"""Extract frozen DenseNet121 (ImageNet) features for CheXpert CSV splits.
-
-Provenance (see PROVENANCE.md):
-  * Frozen-backbone -> cached-feature extraction follows the
-    DINOv2ForRadiology linear-probe methodology (DINORAD, CC BY-NC 4.0,
-    reimplemented; not a verbatim copy).
-  * DenseNet121 + ImageNet weights come from torchvision directly (LIB).
-  * The penultimate-feature pooling (features -> ReLU -> global avg pool ->
-    flatten) and the saved feature-file schema are the author's own (USED-OWN).
-"""
-
 import argparse
 from pathlib import Path
 

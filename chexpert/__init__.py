@@ -1,3 +1,0 @@
-from chexpert.data import IMAGENET_MEAN, IMAGENET_STD, TARGET_LABELS
-
-__all__ = ["TARGET_LABELS", "IMAGENET_MEAN", "IMAGENET_STD"]

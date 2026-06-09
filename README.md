@@ -8,15 +8,6 @@ self-supervised **DINOv3 ViT-B/16** backbone.
 **The repository includes the implementation, preprocessing scripts, and
 instructions required to reproduce the main results.**
 
-## Attribution
-
-- Probe / last-block fine-tuning method 
-  [DINOv2ForRadiology](https://github.com/MohammedSB/DINOv2ForRadiology)
-  (arXiv:2312.02366, CC BY-NC 4.0) 
-- CheXpert U-Zeros policy / DenseNet121 baseline 
-  [Stomper10/CheXpert](https://github.com/Stomper10/CheXpert).
-- DINOv3 via Hugging Face `transformers`; DenseNet121 via `torchvision`.
-
 ## Repository structure
 
 ```text

@@ -20,32 +20,21 @@ instructions required to reproduce the main results.**
 ## Repository structure
 
 ```text
-repro_public/
-├── chexpert_data.py                  # Dataset, transforms, U-Zeros labels, TARGET_LABELS
-├── make_intra_split.py               # Patient-wise train / intra-val split
-├── apply_uzeros_labels.py            # U-Zeros relabeling of split CSVs
-├── count_label_distribution.py       # 5-label value-distribution stats CSV
-├── extract_densenet121_features.py   # Frozen DenseNet121 (ImageNet) features
-├── extract_dinov3_features.py        # Frozen DINOv3 features (cls / mean_patch / mean_max_patch)
-├── train_linear_head.py              # Linear probe on cached features
-├── train_mlp_head.py                 # MLP probe on cached features
-├── evaluate_heads.py                 # Evaluate frozen-head checkpoints (metrics, ROC, confusion, t-SNE/UMAP)
-├── plot_feature_umap.py              # UMAP figures from feature files
-├── finetune_dinov3_last_block.py     # DINOv3 last-block fine-tune
-├── finetune_densenet121_last_block.py# DenseNet121 denseblock4 fine-tune
-├── evaluate_finetuned_models.py      # Evaluate fine-tuned image checkpoints
-└── requirements.txt
+chexpert_data.py                  # Dataset, transforms, U-Zeros labels, TARGET_LABELS
+make_intra_split.py               # Patient-wise train / intra-val split
+apply_uzeros_labels.py            # U-Zeros relabeling of split CSVs
+count_label_distribution.py       # 5-label value-distribution stats CSV
+extract_densenet121_features.py   # Frozen DenseNet121 (ImageNet) features
+extract_dinov3_features.py        # Frozen DINOv3 features (cls / mean_patch / mean_max_patch)
+train_linear_head.py              # Linear probe on cached features
+train_mlp_head.py                 # MLP probe on cached features
+evaluate_heads.py                 # Evaluate frozen-head checkpoints (metrics, ROC, confusion, t-SNE/UMAP)
+plot_feature_umap.py              # UMAP figures from feature files
+finetune_dinov3_last_block.py     # DINOv3 last-block fine-tune
+finetune_densenet121_last_block.py# DenseNet121 denseblock4 fine-tune
+evaluate_finetuned_models.py      # Evaluate fine-tuned image checkpoints
+requirements.txt
 ```
-
-## Setup
-
-```bash
-pip install -r requirements.txt
-# Install a CUDA-enabled torch/torchvision build matching your CUDA version.
-```
-
-DINOv3 features/fine-tuning download the backbone from Hugging Face; set
-`HF_TOKEN` (or pass `--hf-token`) if the model requires authentication.
 
 ## Data layout
 
@@ -53,19 +42,12 @@ Place the CheXpert CSVs and images under `data/` (the dataset is **not**
 included):
 
 ```text
-data/
-├── train.csv
-├── valid.csv
-└── valid/ , train/ ...        # CheXpert(-v1.0-small) image folders
+data/train.csv
+data/valid.csv
+data/valid/ , train/ ...        # CheXpert(-v1.0-small) image folders
 ```
 
-Paths in the CSV `Path` column of the form `CheXpert-v1.0-small/<...>` are
-resolved relative to `--data-root` (default `data`).
-
 ## Reproducing the main results
-
-Run all commands from this folder. Outputs default to `data/`, `features/`,
-`checkpoints/`, `evaluation/`, `umap_outputs/` in the working directory.
 
 ### 1. Splits and U-Zeros labels
 
@@ -79,11 +61,6 @@ python make_intra_split.py \
 python apply_uzeros_labels.py \
   --splits data/train_internal.csv data/intraval_internal.csv data/valid.csv \
   --output-dir data/processed
-
-# optional: dataset label-distribution stats
-python count_label_distribution.py \
-  --train-csv data/train.csv --valid-csv data/valid.csv \
-  --output results/chexpert_5label_distribution_combined.csv
 ```
 
 ### 2. Frozen feature extraction

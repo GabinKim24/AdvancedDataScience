@@ -1,8 +1,0 @@
-torch
-torchvision
-transformers
-pandas
-Pillow
-matplotlib
-scikit-learn
-umap-learn
